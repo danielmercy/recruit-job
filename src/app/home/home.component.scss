@@ -1,0 +1,46 @@
+
+.landing-page {
+    height: 100vh;
+    background: url('../../assets/images/2663529.jpg');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: right;
+}
+
+
+mat-toolbar {
+    padding: 0 96px;
+    height: 120px;
+    background: transparent;
+    font-family: 'Pacifico', cursive !important;
+
+    a {
+        font-family: inherit;
+        letter-spacing: 2px;
+    }
+}
+
+.wrapper {
+    max-width: 86vw;
+    width: 100%;
+    margin: auto;
+}
+
+.intro {
+    max-width: 50%;
+    width: 100%;
+    margin: 60px 0;
+
+    .intro__header {
+        h1 {
+            font-size: 3em;
+            font-weight: bolder;
+            letter-spacing: -2px;
+            margin: 2px 0;
+        } 
+
+        p {
+            color: rgb(196, 196, 196);
+        }
+    }
+}

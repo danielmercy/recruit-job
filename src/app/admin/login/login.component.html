@@ -1,0 +1,29 @@
+<div class="login-page">
+    <div class="form-page">
+        <div class="form-page__header">
+            <h1><a routerLink="" >Recruit <em style="font-weight: bold; color: var(--primary)">Job.</em></a></h1>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+
+        <div class="form-page__content">
+            <form>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" placeholder="Email">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" placeholder="Password">
+                </mat-form-field>
+
+                <button mat-raised-button routerLink="/jobs" color="primary">Login</button>
+            </form>
+
+            <div class="more-action">
+                <span>Don't have account yet?</span>
+                <a routerLink="/admin/register" color="primary" mat-button>Register</a>
+            </div>
+        </div>
+    </div>
+</div>
