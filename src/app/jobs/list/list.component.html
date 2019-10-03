@@ -9,9 +9,9 @@
                 <div class="list__item">
                     <div class="list__item__header">
                         <div class="info">
-                            <div class="avatar">
+                            <!-- <div class="avatar">
                                 <img [src]="job.category.image" alt="">
-                            </div>
+                            </div> -->
                             <div class="list__item__header__text">
                                 <h4>{{job.title}}</h4>
                                 <p>{{job.category}}</p>
@@ -26,7 +26,7 @@
                     <div class="list__item__content">
                         <div>
                             <h5>Based in</h5>
-                            <p>Ikeja Lagos Nigeria</p>
+                            <p>{{job.city}} {{job.state}}, {{job.country}}</p>
                         </div>
                     </div>
                 </div>
