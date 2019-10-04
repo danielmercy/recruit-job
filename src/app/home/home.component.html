@@ -6,6 +6,7 @@
         <a *ngIf="!currentUser" routerLink="admin/register" mat-button color="accent">Register</a>
         <a routerLink="jobs" mat-button color="accent">Find Jobs</a>
         <a *ngIf="currentUser" (click)="logout()" mat-button color="accent">Logout</a>
+        <a *ngIf="currentUser" routerLink="admin/dashboard" mat-button color="accent">Dashboard</a>
     </mat-toolbar>
     
     <main>
