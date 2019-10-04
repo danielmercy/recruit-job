@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',
     component: ListComponent
   },{
-    path: ':id',
+    path: ':id/:slug',
     component: SingleComponent
   },{
     path: 'create',
