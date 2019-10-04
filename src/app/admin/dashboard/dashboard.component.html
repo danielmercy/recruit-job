@@ -1,1 +1,33 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+    <mat-toolbar>
+        <span><a style="text-decoration: none; color: inherit;" routerLink="">Recruit <em style="font-weight: bold; color: var(--primary)">Job.</em></a></span>
+        <span class="space"></span>
+        <a *ngIf="!isAuthenticated" routerLink="admin/login" mat-button color="accent">Login</a>
+        <a *ngIf="!isAuthenticated" routerLink="admin/register" mat-button color="accent">Register</a>
+        <a *ngIf="isAuthenticated" (click)="logout()" mat-button color="accent">Logout</a>
+        <a *ngIf="isAuthenticated" routerLink="" mat-button color="accent">Dashboard</a>
+    </mat-toolbar>
+
+    <div *ngIf="!isLoading" class="content">
+        <div class="flex row">
+            <mat-card class="mini-card">
+                <mat-card-header>
+                    <mat-card-title>Total Jobs</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    {{jobs.length}}
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div *ngIf="isLoading" class="loader">
+        <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+    </div>
+
+    <div class="actions">
+        <a mat-fab title="Create Job" routerLink="/jobs/create" color="primary">
+            <mat-icon class="mat-18">add</mat-icon>
+        </a>
+    </div>
+</div>

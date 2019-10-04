@@ -1,10 +1,14 @@
 <div class="jobs">
     <mat-toolbar>
-        <span>Recruit <em style="font-weight: bold; color: var(--primary)">Job.</em></span>
+        <span><a style="text-decoration: none; color: inherit;" routerLink="">Recruit <em style="font-weight: bold; color: var(--primary)">Job.</em></a></span>
         <span class="space"></span>
+        <a *ngIf="!isAuthenticated" routerLink="/admin/login" mat-button color="accent">Login</a>
+        <a *ngIf="!isAuthenticated" routerLink="/admin/register" mat-button color="accent">Register</a>
+        <a *ngIf="isAuthenticated" (click)="logout()" mat-button color="accent">Logout</a>
+        <a *ngIf="isAuthenticated" routerLink="/admin/dashboard" mat-button color="accent">Dashboard</a>
     </mat-toolbar>
 
-    <div class="list">
+    <div *ngIf="!isLoading" class="list">
         <div class="list-content " *ngFor="let job of jobs;">
                 <div class="list__item">
                     <div class="list__item__header">
@@ -31,5 +35,9 @@
                     </div>
                 </div>
         </div>
+    </div>
+
+    <div *ngIf="isLoading" class="loader">
+        <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
     </div>
 </div>

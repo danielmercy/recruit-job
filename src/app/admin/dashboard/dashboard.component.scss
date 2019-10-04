@@ -1,0 +1,32 @@
+.dashboard {
+    position: relative;
+    height: 100vh
+}
+
+mat-toolbar {
+    padding: 0 96px;
+    height: 120px;
+    background: transparent;
+    font-family: 'Pacifico', cursive !important;
+
+    a {
+        font-family: inherit;
+        letter-spacing: 2px;
+    }
+}
+
+.content {
+    max-width: 86vw;
+    width: 100%;
+    margin: 0 auto;
+
+    .mini-card {
+        width: 30%;
+    }
+}
+
+.actions {
+    position: absolute;
+    bottom: 50px;
+    right: 80px;
+}

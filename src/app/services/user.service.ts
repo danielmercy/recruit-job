@@ -1,3 +1,4 @@
+import { JobService } from './job.service';
 import { Injectable } from '@angular/core';
 
 interface LocalUser {
@@ -21,6 +22,10 @@ export class UserService {
   
     constructor() { }
 
+    public  get isAuthenticated(): boolean {
+        return this.retrieveToken() != null || this.retrieveToken().length > 10 ? true : false;
+    } 
+
     store(content:Object) {
         localStorage.setItem(this.key, JSON.stringify(content));
     }
@@ -39,7 +44,6 @@ export class UserService {
         if(this.checkValidity) {
             const result: any = JSON.parse(localStorage.getItem(this.key));
             const token: string = result ? result.access_token : '';
-            console.log(token)
             return token;
         } else {
             throw new Error('No User Found');

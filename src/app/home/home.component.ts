@@ -10,25 +10,35 @@ import { UserService } from '../services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  private _currenUser: any;
+  private _currentUser: any;
+  private _isAuthenticated: boolean;
 
   constructor(private router: Router, private authRepo: AdminService, private userRepo: UserService) { }
 
   ngOnInit() {
     this.currentUser = this.userRepo.retrieveUser();
+    this.isAuthenticated = this.userRepo.isAuthenticated;
+  }
+
+  public get isAuthenticated(): boolean {
+    return this._isAuthenticated;
+  }
+
+  public set isAuthenticated(value: boolean) {
+    this._isAuthenticated = value;
   }
 
   logout() {
-    this.authRepo.logout();
     this.currentUser = null
+    this.authRepo.logout();
   }
 
-  get currentUser() {
-    return this._currenUser;
+  public get currentUser() {
+    return this._currentUser;
   }
 
-  set currentUser(value: object) {
-    this._currenUser = value;
+  public set currentUser(value: object) {
+    this._currentUser = value;
   }
 
 }
