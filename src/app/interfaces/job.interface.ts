@@ -22,19 +22,27 @@ interface JobCompnay {
   created: string;
 }
 
-export default interface Job {
-    id: number;
-    title: string;
-    requirements: string;
-    description: string;
-    category: JobCategory;
-    website: string;
-    address: string;
-    city: string;
-    state: string;
-    country: string;
-    created: string;
-    company: JobCompnay;
-  }
+export interface Response {
+  data: { message: Job[] }
+}
+
+export interface Response2 {
+  data: Job
+}
+
+export interface Job {
+  id: number;
+  title: string;
+  requirements: string;
+  description: string;
+  category: JobCategory;
+  website: string;
+  address: string;
+  city: string;
+  state: string;
+  country: string;
+  created: string;
+  company: JobCompnay;
+}
   
   

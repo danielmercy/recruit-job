@@ -2,32 +2,51 @@
     <div class="form-page">
         <div class="form-page__header">
             <h1><a routerLink="" >Recruit <em style="font-weight: bold; color: var(--primary)">Job.</em></a></h1>
-            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Create a single account to manage all jobs</p>
         </div>
 
         <div class="form-page__content">
-            <form>
+            <form [formGroup]="registrationForm" (ngSubmit)="submit()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input formControlName="username" matInput type="text" placeholder="Username" required>
+                    <mat-error *ngIf="registrationForm.controls.username.errors?.required">Must not be empty</mat-error>
+                </mat-form-field>
+
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input matInput type="email" placeholder="Email">
+                    <input formControlName="email" matInput type="email" placeholder="Email" required>
+                    <mat-error *ngIf="registrationForm.controls.email.errors?.required">Must not be empty</mat-error>
+                    <mat-error *ngIf="registrationForm.controls.email.errors?.email">Must be a valid email address</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput type="password" placeholder="Password">
+                    <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" placeholder="Password" required>
+                    <button matSuffix mat-icon-button color="primary" (click)="hide = !hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="registrationForm.controls.password.errors?.required">Must not be empty</mat-error>
+                    <mat-error *ngIf="registrationForm.controls.password.errors?.pattern">at least 1 uppercase letter, min of 8 chars, and 1 digits</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Confirm Password</mat-label>
-                    <input matInput type="password" placeholder="Confirm Password">
+                    <input formControlName="cpassword" matInput [type]="chide ? 'password' : 'text'" placeholder="Confirm Password" required>
+                    <button matSuffix mat-icon-button color="primary" (click)="chide = !chide">
+                        <mat-icon>{{chide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="registrationForm.controls.cpassword.errors?.required">Must not be empty</mat-error>
+                    <mat-error *ngIf="registrationForm.controls.password.errors?.pattern">at least 1 uppercase letter, min of 8 chars, and 1 digits</mat-error>
+                    <mat-error *ngIf="registrationForm.controls.cpassword.errors?.notEquivalent">Confirm Password must match Password</mat-error>
                 </mat-form-field>
 
-                <button mat-raised-button (click)="register" color="primary">Register</button>
+                <button [disabled]="!registrationForm.valid" mat-raised-button color="primary">Register</button>
             </form>
 
             <div class="more-action">
-                <span>Already have account yet?</span>
-                <a routerLink="/admin/login" color="primary" mat-button>Login</a>
+                <span>Already have account?</span>
+                <a routerLink="/admin/login" color="accent" mat-button>Login</a>
             </div>
         </div>
     </div>

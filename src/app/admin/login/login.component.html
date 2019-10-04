@@ -2,27 +2,35 @@
     <div class="form-page">
         <div class="form-page__header">
             <h1><a routerLink="" >Recruit <em style="font-weight: bold; color: var(--primary)">Job.</em></a></h1>
-            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Login to your account</p>
         </div>
 
         <div class="form-page__content">
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="submit()">
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input matInput type="email" placeholder="Email">
+                    <input formControlName="email" matInput type="email" placeholder="Email" required>
+                    <mat-icon matSuffix color="primary">mail</mat-icon>
+                    <mat-error *ngIf="loginForm.controls.email.errors?.required">Must not be empty</mat-error>
+                    <mat-error *ngIf="loginForm.controls.email.errors?.email">Must be a valid email address</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput type="password" placeholder="Password">
+                    <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" placeholder="Password" required>
+                    <button matSuffix mat-icon-button color="primary" (click)="hide = !hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm.controls.password.errors?.required">Must not be empty</mat-error>
+                    <mat-error *ngIf="loginForm.controls.password.errors?.pattern">at least 1 uppercase letter, min of 8 chars, and 1 digit</mat-error>
                 </mat-form-field>
 
-                <button mat-raised-button routerLink="/jobs" color="primary">Login</button>
+                <button [disabled]="!loginForm.valid" mat-raised-button color="primary">Login</button>
             </form>
 
             <div class="more-action">
                 <span>Don't have account yet?</span>
-                <a routerLink="/admin/register" color="primary" mat-button>Register</a>
+                <a routerLink="/admin/register" color="accent" mat-button>Register</a>
             </div>
         </div>
     </div>

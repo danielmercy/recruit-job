@@ -41,10 +41,7 @@
                 }
 
                 .list__item__header__text {
-                    // margin-left: 10px;
                     h4 {
-                        // white-space: nowrap; 
-                        // overflow: hidden;
                         text-overflow: ellipsis;
                     }
                     h4, p {

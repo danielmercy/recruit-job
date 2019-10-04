@@ -1,1 +1,27 @@
-<p>single works!</p>
+<div class="single">
+    <h1 class="logo"><a routerLink="" >Recruit <em style="font-weight: bold; color: var(--primary)">Job.</em></a></h1>
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>{{job?.position}}</mat-card-title>
+            <mat-card-subtitle>{{job?.company_name}}</mat-card-subtitle>
+        </mat-card-header>
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+        <mat-card-content>
+            <div class="requirment">
+                <h5>Requirements</h5>
+                <p>{{job?.requirements}}</p>
+            </div>
+            <div class="description">
+                <h5>Description</h5>
+                <p>{{job?.description}}</p>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary">Apply</button>
+            <span class="space"></span>
+            <button mat-button color="accent">
+                <mat-icon class="mat-18">link</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

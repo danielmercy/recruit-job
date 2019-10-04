@@ -1,0 +1,22 @@
+.single {
+    height: 100vh;
+    background: #d6c5f51a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1.logo {
+    font: 500 20px/32px 'Pacifico', cursive;
+    margin: 15px 0;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+mat-card {
+    width: 50%;
+}

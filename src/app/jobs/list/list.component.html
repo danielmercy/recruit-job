@@ -5,7 +5,7 @@
     </mat-toolbar>
 
     <div class="list">
-        <div class="list-content " *ngFor="let job of jobs">
+        <div class="list-content " *ngFor="let job of jobs;">
                 <div class="list__item">
                     <div class="list__item__header">
                         <div class="info">
@@ -13,13 +13,13 @@
                                 <img [src]="job.category.image" alt="">
                             </div> -->
                             <div class="list__item__header__text">
-                                <h4>{{job.title}}</h4>
+                                <h4>{{job.position}}</h4>
                                 <p>{{job.category}}</p>
                             </div>
                         </div>
                         <span class="space"></span>
                         <div class="actions">
-                            <a mat-raised-button href="#" color="primary">Apply</a>
+                            <a [routerLink]="job.id" mat-raised-button href="#" color="primary">Apply</a>
                         </div>
                     </div>
         

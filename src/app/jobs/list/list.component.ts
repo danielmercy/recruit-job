@@ -1,6 +1,6 @@
 import { JobService } from './../../services/job.service';
 import { Component, OnInit } from '@angular/core';
-import Job from 'src/app/interfaces/job.interface';
+// import Job from 'src/app/interfaces/job.interface';
 
 @Component({
   selector: 'app-list',
@@ -15,14 +15,11 @@ export class ListComponent implements OnInit {
 
   async ngOnInit() {
     await this.getJobs();
-    console.log(this.jobs.message)
   }
 
-  async getJobs(): Promise<any> {
+  async getJobs(): Promise<void> {
     const jobs = await this.jobRepo.getJobs();
     this.jobs = jobs;
   }
-
-
 
 }

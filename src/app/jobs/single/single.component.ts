@@ -1,3 +1,6 @@
+import { JobService } from './../../services/job.service';
+import { ActivatedRoute } from '@angular/router';
+import {Job} from 'src/app/interfaces/job.interface';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingleComponent implements OnInit {
 
-  constructor() { }
+  job: Job;
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private jobRepo: JobService) { }
+
+  async ngOnInit() {
+    await this.getJob();
+  }
+
+  async getJob(): Promise<any> {
+    const id: string = this.route.snapshot.params['id'];
+    const job = await this.jobRepo.getJob(id);
+    this.job = job;
+    console.log(this.job);
   }
 
 }
