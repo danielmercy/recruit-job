@@ -2,9 +2,10 @@
     <mat-toolbar>
         <span>Recruit <em style="font-weight: bold; color: var(--primary)">Job.</em></span>
         <span class="space"></span>
-        <a routerLink="admin/login" mat-button color="accent">Login</a>
-        <a routerLink="admin/register" mat-button color="accent">Register</a>
+        <a *ngIf="!currentUser" routerLink="admin/login" mat-button color="accent">Login</a>
+        <a *ngIf="!currentUser" routerLink="admin/register" mat-button color="accent">Register</a>
         <a routerLink="jobs" mat-button color="accent">Find Jobs</a>
+        <a *ngIf="currentUser" (click)="logout()" mat-button color="accent">Logout</a>
     </mat-toolbar>
     
     <main>

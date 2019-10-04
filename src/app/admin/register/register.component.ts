@@ -54,7 +54,9 @@ export class RegisterComponent implements OnInit {
     } catch (error) {
       this.isLoading = false;
       throw new Error(error.message)
-    } 
+    } finally {
+      this.router.navigateByUrl('/admin/dashboard');
+    }
   }
 
 }

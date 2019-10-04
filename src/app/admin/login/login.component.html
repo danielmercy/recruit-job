@@ -2,10 +2,10 @@
     <div class="form-page">
         <div class="form-page__header">
             <h1><a routerLink="" >Recruit <em style="font-weight: bold; color: var(--primary)">Job.</em></a></h1>
-            <p>Login to your account</p>
+            <p><span *ngIf="!isLoading">Login</span><span *ngIf="isLoading">Logging</span> to your account</p>
         </div>
 
-        <div class="form-page__content">
+        <div *ngIf="!isLoading" class="form-page__content">
             <form [formGroup]="loginForm" (ngSubmit)="submit()">
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
@@ -32,6 +32,9 @@
                 <span>Don't have account yet?</span>
                 <a routerLink="/admin/register" color="accent" mat-button>Register</a>
             </div>
+        </div>
+        <div class="loader" *ngIf="isLoading">
+            <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
         </div>
     </div>
 </div>

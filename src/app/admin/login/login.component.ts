@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AdminService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -11,17 +12,19 @@ import { AdminLoginDTO } from 'src/app/DTOs/admin.dto';
 export class LoginComponent implements OnInit {
 
   hide: boolean = true;
+  isLoading: boolean = false;
 
   loginForm = this.fb.group({
     email: ['', Validators.email],
-    password: ['', Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/g)]
+    password: ['', Validators.required]
+    // password: ['', Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/g)]
   })
 
-  constructor(private fb: FormBuilder, private authRepo: AdminService) { 
+  constructor(private fb: FormBuilder, private authRepo: AdminService, private router: Router) { 
     // this.loginForm.valueChanges.subscribe((e) => console.log(this.loginForm.controls.email))
     this.loginForm.setValue({
-      email: 'dayo@almondcareers.com',
-      password: 'Something1'
+      email: 'Onakoyak@gmail.com',
+      password: 'password'
     });
    }
 
@@ -30,7 +33,16 @@ export class LoginComponent implements OnInit {
 
   async submit() {
     const formData: AdminLoginDTO = this.loginForm.value;
-    const result = await this.authRepo.login(formData);
+    let result;
+    try {
+      this.isLoading = true
+      result = await this.authRepo.login(formData);
+    } catch (error) {
+      throw new Error(error.message)
+    } finally {
+      console.log(result)
+      this.router.navigateByUrl('/admin/dashboard');
+    }
   }
 
 }

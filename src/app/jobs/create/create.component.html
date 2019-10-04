@@ -1,1 +1,82 @@
-<p>create works!</p>
+<div class="create-page">
+    <div class="form-page">
+        <div class="form-page__header">
+            <h1><a routerLink="" >Recruit <em style="font-weight: bold; color: var(--primary)">Job.</em></a></h1>
+            <p>Add a job opening to the database</p>
+        </div>
+
+        <div *ngIf="!isLoading" class="form-page__content">
+            <form [formGroup]="addJobForm" (ngSubmit)="submit()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input formControlName="title" matInput type="text" placeholder="Title" required>
+                    <mat-error *ngIf="addJobForm.controls.title.errors?.required">Must not be empty</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Position</mat-label>
+                    <input formControlName="position" matInput type="text" placeholder="Position" required>
+                    <mat-error *ngIf="addJobForm.controls.position.errors?.required">Must not be empty</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Website</mat-label>
+                    <input formControlName="website" matInput type="url" placeholder="Website" required>
+                    <mat-error *ngIf="addJobForm.controls.website.errors?.required">Must not be empty</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Type</mat-label>
+                    <input formControlName="type" matInput type="text" placeholder="Type" required>
+                    <mat-error *ngIf="addJobForm.controls.type.errors?.required">Must not be empty</mat-error>
+                </mat-form-field>
+
+                <div class="flex row">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Country</mat-label>
+                        <input formControlName="country" matInput type="text" placeholder="Country" required>
+                        <mat-error *ngIf="addJobForm.controls.country.errors?.required">Must not be empty</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>State</mat-label>
+                        <input formControlName="state" matInput type="text" placeholder="State" required>
+                        <mat-error *ngIf="addJobForm.controls.state.errors?.required">Must not be empty</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="flex row">
+                    <mat-form-field appearance="outline">
+                        <mat-label>City</mat-label>
+                        <input formControlName="city" matInput type="text" placeholder="City" required>
+                        <mat-error *ngIf="addJobForm.controls.city.errors?.required">Must not be empty</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Address</mat-label>
+                        <input formControlName="address" matInput type="text" placeholder="Address" required>
+                        <mat-error *ngIf="addJobForm.controls.address.errors?.required">Must not be empty</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Requirements</mat-label>
+                    <textarea formControlName="requirements" matInput placeholder="Requirements"></textarea>
+                    <mat-error *ngIf="addJobForm.controls.requirements.errors?.required">Must not be empty</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea formControlName="description" matInput placeholder="Description"></textarea>
+                    <mat-error *ngIf="addJobForm.controls.description.errors?.required">Must not be empty</mat-error>
+                </mat-form-field>
+
+                <button [disabled]="!addJobForm.valid" mat-raised-button color="primary">Create</button>
+            </form>
+        </div>
+
+        <div class="loader" *ngIf="isLoading">
+            <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+        </div>
+    </div>
+</div>

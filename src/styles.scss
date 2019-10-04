@@ -20,6 +20,12 @@ html, body {
     flex: 1 1 auto;
 }
 
+.loader {
+    margin: 20px auto;
+    width: fit-content;
+    transform: scale(.5);
+}
+
 .form-page {
     max-width: 30vw;
     width: 100%;

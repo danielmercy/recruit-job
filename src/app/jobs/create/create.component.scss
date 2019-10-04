@@ -1,0 +1,25 @@
+.create-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #d6c5f51a;
+    padding: 20px;
+}
+
+.flex {
+    display: flex;
+
+    &.row {
+        flex-direction: row;
+
+        mat-form-field:first-child {
+            margin-right: 10px;
+        }
+    }
+
+    &.column {
+        flex-direction: column;
+    }
+
+    
+}

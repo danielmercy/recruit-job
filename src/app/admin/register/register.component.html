@@ -5,7 +5,7 @@
             <p>Create a single account to manage all jobs</p>
         </div>
 
-        <div class="form-page__content">
+        <div *ngIf="!isLoading" class="form-page__content">
             <form [formGroup]="registrationForm" (ngSubmit)="submit()">
                 <mat-form-field appearance="outline">
                     <mat-label>Username</mat-label>
@@ -48,6 +48,10 @@
                 <span>Already have account?</span>
                 <a routerLink="/admin/login" color="accent" mat-button>Login</a>
             </div>
+        </div>
+
+        <div class="loader" *ngIf="isLoading">
+            <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
         </div>
     </div>
 </div>
